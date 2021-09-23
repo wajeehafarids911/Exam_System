@@ -1,0 +1,23 @@
+{% extends 'master.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% translate 'Index' %}
+{% endblock %}
+
+{% block content %}
+    {% for object in object_list %}
+        <div class="col-md-4 mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ object.title }}</h5>
+                    <p class="card-text">{{ object.description }}</p>
+                    <a href="{% url 'core:course_detail_view' object.id %}" class="btn btn-primary">
+                        {% translate 'Go To Course' %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
